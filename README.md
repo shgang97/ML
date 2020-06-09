@@ -15,4 +15,5 @@ To achieve machine learning algorithm with Python.
         Perceptron
     knn
         KNN--linear scan
+    logisticregression
 
