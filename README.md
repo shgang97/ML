@@ -16,4 +16,5 @@ To achieve machine learning algorithm with Python.
     knn
         KNN--linear scan
     logisticregression
+        LogisticRegression
 
