@@ -17,4 +17,6 @@ To achieve machine learning algorithm with Python.
         KNN--linear scan
     logisticregression
         LogisticRegression
+    naivebayes
+        NaiveBayes--MLE
 
