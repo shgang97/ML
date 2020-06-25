@@ -39,7 +39,7 @@ class KMeans:
 # 进行测试
 if __name__ == '__main__':
     # 定义一个函数，绘制数据集和质心的散点图
-    def plotKMeans(x, y, centroids, subplot, title):
+    def plotKMeans(x, centroids, subplot, title):
         # 分配子图
         plt.subplot(subplot)
         plt.scatter(x[:, 0], x[:, 1], c=y)
@@ -56,9 +56,26 @@ if __name__ == '__main__':
     from sklearn.datasets.samples_generator import make_blobs
 
     x, y = make_blobs(n_samples=100, centers=6, random_state=1234, cluster_std=0.5)
-    kmeans = KMeans(6)
+
+    # 实例化一个kmeans聚类器
+    kmeans = KMeans(n_cluster=6, max_iter=1500, centroids=np.array([[2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6]]))
+    # kmeans = KMeans(n_cluster=6, max_iter=1500)  # 针对本例测试发现当不指定初始化质心时，需要迭代更多的次数才能达到很好的效果
+    # 指定绘图大小
     plt.figure(figsize=(16, 6))
-    plotKMeans(x, y, kmeans.centoids, 121, 'Initial State')
+
+    # 画出未训练的数据散点图和质心（如果传入初始化质心）
+    plotKMeans(x, kmeans.centoids, 121, 'Initial State')
+    # 训练模型
     kmeans.fit(x)
-    plotKMeans(x, y, kmeans.centoids, 122, 'Final State')
+    # 画出训练后的数据散点图和质心
+    plotKMeans(x, kmeans.centoids, 122, 'Final State')
+    # plt.show()
+
+    # 预测新数据点的类别并显示在训练后的散点图上
+    x_test = np.array([[0, 0], [10, 7]])
+    y_pred = kmeans.predict(x_test)
+    print(kmeans.centoids)
+    print(y_pred)
+    plt.subplot(122)
+    plt.scatter(x_test[:, 0], x_test[:, 1], s=100, c='r')
     plt.show()
