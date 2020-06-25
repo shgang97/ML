@@ -8,8 +8,7 @@ To achieve machine learning algorithm with Python.
 ### regression
     simplelinearregression
         LeastSquares
-        GradientDescent
-        
+        GradientDescent                
 ### classification
     perceptron
         Perceptron
@@ -19,4 +18,7 @@ To achieve machine learning algorithm with Python.
         LogisticRegression
     naivebayes
         NaiveBayes--MLE
-
+## unsupervised learning
+### cluster
+    k-means 
+        K_Means   
